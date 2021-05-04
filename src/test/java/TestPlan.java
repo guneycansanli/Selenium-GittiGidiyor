@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -26,6 +27,7 @@ public class TestPlan {
     public static void start() throws InterruptedException {
 
         openThePage();
+        clearCookie();
         loginToPage();
         searchInMain();
         selectToSecondPage();
@@ -33,14 +35,8 @@ public class TestPlan {
         addToBasket();
         addOneItem();
         deleteBasket();
-
-        /*
-        WebForm webForm = new WebForm(driver);
-        webForm.enterFirstName();
-        webForm.enterLastName();
-        webForm.pressSubmitButton();
-         */
     }
+
 
     public static void openThePage() throws InterruptedException {
 
@@ -53,6 +49,13 @@ public class TestPlan {
             System.out.println("You reached the wrong URL!!!!");
         }
         Thread.sleep(1000);
+
+    }
+
+    public static void clearCookie() throws InterruptedException {
+
+        WebForm webForm = new WebForm(driver);
+            webForm.clearCookie();
 
     }
 
@@ -125,7 +128,7 @@ public class TestPlan {
         if(price.equals(priceBasket)){
             System.out.println("Your prices are same " + price);
         }else {
-            System.out.println("Your prices are different!!!");
+            System.out.println("Your prices are different");
         }
 
     }
@@ -163,12 +166,11 @@ public class TestPlan {
         }
 
         Thread.sleep(2000);
-        
+
     }
 
     @AfterSuite                        //After test here is in process
     public static void cleanUp() {
-        driver.manage().deleteAllCookies();
         driver.close();
     }
 }

@@ -1,11 +1,12 @@
 // Page URL: https://formy-project.herokuapp.com/form
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Random;
 
-public class WebForm extends PageObject{
+public class WebForm extends PageObject {
 
     private final String EMAIL = "guneycansanli@hotmail.com";
     private final String PASSWORD = "123abc";
@@ -65,74 +66,87 @@ public class WebForm extends PageObject{
     @FindBy(css = "div[class='gg-w-22 gg-d-22 gg-t-21 gg-m-18']>:nth-child(1)")
     private WebElement empty_test;
 
+    @FindBy(xpath = "//*[@id='__next']/main/section/section/a")
+    private WebElement clear_cookie;
+
     public WebForm(WebDriver driver) {
         super(driver);
     }
 
-    public void enterEmail(){
+    public void enterEmail() {
         this.e_mail.sendKeys(EMAIL);
     }
 
-    public void enterPassword(){
+    public void enterPassword() {
         this.last_name.sendKeys(PASSWORD);
     }
 
-    public void pressLoginDiv(){
+    public void pressLoginDiv() {
         this.login_div.click();
     }
 
-    public void signIn(){
+    public void signIn() {
         this.sign_in.click();
     }
 
-    public void pressLoginButton(){
+    public void pressLoginButton() {
         this.login_button.click();
     }
 
-    public void pressSearchButton(){
+    public void pressSearchButton() {
         this.search_button.click();
     }
 
-    public void searchInput(String searchInput){      // From Test Plan
+    public void searchInput(String searchInput) {      // From Test Plan
         this.search_input.sendKeys(searchInput);
     }
 
-    public void clickSecondPage(){
+    public void clickSecondPage() {
         this.click_second_page.click();
     }
 
-    public void selectItem(){
+    public void selectItem() {
         this.select_item.click();
     }
 
-    public void addToBasket(){
+    public void addToBasket() {
         this.add_to_basket.click();
     }
 
-    public void goBasket(){
+    public void goBasket() {
         this.go_basket.click();
     }
-    public String itemPrice(){
+
+    public String itemPrice() {
         return this.item_price.getText();
     }
-    public String basketPrice(){
+
+    public String basketPrice() {
         return this.basket_price.getText();
     }
-    public void addOneItem(){
+
+    public void addOneItem() {
         this.add_one_item.click();
     }
 
-    public String getItems(){
+    public String getItems() {
         return this.get_items.getText();
     }
-    public void deleteBasket(){
+
+    public void deleteBasket() {
         this.delete_basket.click();
     }
-    public String getUrl(){
+
+    public String getUrl() {
         return "https://www.gittigidiyor.com/arama/?k=bilgisayar&sf=2";
     }
-    public String emptyTest(){
+
+    public String emptyTest() {
         return empty_test.getText();
+    }
+
+    public void clearCookie() {
+        this.clear_cookie.click();
     }
 
 }
